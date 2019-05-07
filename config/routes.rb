@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   resources :spaces, only: [:index, :show, :new]
   resources :events, only: [:index, :show, :new]
 
+  namespace :api do
+    namespace :v1 do
+      resources :spaces, only: [:index]
+    end
+  end
+
 end
