@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :new]
 
   def index
   end
