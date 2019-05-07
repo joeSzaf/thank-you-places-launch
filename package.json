@@ -9,6 +9,16 @@
     "react-dom": "~15.4.2",
     "redbox-react": "1.6.0"
   },
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "babel-preset-react": "~6.24.1",
+    "google-map-react": "^1.1.4",
+    "prop-types": "~15.6.0",
+    "react": "~15.4.2",
+    "react-dom": "~15.4.2",
+    "react-router": "~3.2.0",
+    "redbox-react": "1.6.0"
+  },
   "devDependencies": {
     "webpack-dev-server": "^2.11.1",
     "webpack-cli": "^2.0.10",

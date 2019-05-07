@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'spaces#index'
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :spaces, only: [:index, :show, :new]
+  resources :events, only: [:index, :show, :new]
+
 end
