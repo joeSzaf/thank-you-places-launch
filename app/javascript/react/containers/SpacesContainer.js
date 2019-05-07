@@ -7,21 +7,51 @@ class SpacesContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      spaces: []
     }
   }
 
   componentDidMount() {
-
+    fetch('http://localhost:3000/api/v1/spaces')
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+        spaces: body.spaces
+      })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
-      return(
-        <div className="">
-         <p>Hello from the Spaces Index Page!</p>
-         <SpaceTile />
-         <SpaceTile />
-        </div>
-      )
+
+    let spaces = this.state.spaces.map(space => {
+        return(
+          <SpaceTile
+            key={space.id}
+            id={space.id}
+            name={space.name}
+            location={space.location}
+            capacity={space.capacity}
+            description={space.description}
+          />
+        )
+      })
+
+    return(
+      <div className="">
+       <p>Hello from the Spaces Index Page!</p>
+       {spaces}
+      </div>
+    )
   }
 }
 
