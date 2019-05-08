@@ -24,7 +24,6 @@ class SpaceNewFormContainer extends React.Component {
   }
 
   addNewSpace(formPayload){
-    debugger
     fetch("/api/v1/spaces",{
       credentials: 'same-origin',
       method: 'POST',
@@ -66,7 +65,7 @@ class SpaceNewFormContainer extends React.Component {
         capacity: this.state.spaceCapacity,
         description: this.state.spaceDescription,
       }
-      this.addNewSpace(formPayload);
+      this.addNewSpace(formPayload)
       this.handleClearForm(event)
     }
   }

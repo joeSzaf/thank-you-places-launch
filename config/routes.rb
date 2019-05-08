@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :spaces, only: [:index, :show, :new]
   resources :events, only: [:index, :show, :new]
+  resources :homes, only: [:index]
 
   namespace :api do
     namespace :v1 do

@@ -3,6 +3,7 @@ import { Router, browserHistory, Route, IndexRoute } from 'react-router'
 import TextField from '../components/TextField'
 import DateTimeField from '../components/DateTimeField'
 import SpaceSelectMenu from '../components/SpaceSelectMenu'
+import moment from 'moment'
 
 class EventNewFormContainer extends React.Component {
   constructor(props) {
@@ -10,8 +11,8 @@ class EventNewFormContainer extends React.Component {
     this.state = {
       eventName: "",
       eventSpace: "",
-      startTime: new Date().toISOString().slice(0, -10) +"00",
-      endTime: new Date().toISOString().slice(0, -10) +"00",
+      startTime: moment().format('YYYY-MM-DDThh:00'),
+      endTime: moment().format('YYYY-MM-DDThh:00'),
       spaces: [],
       errors: {}
     }
@@ -64,10 +65,10 @@ class EventNewFormContainer extends React.Component {
       let formPayload = {
         name: this.state.eventName,
         space_id: parseInt(this.state.eventSpace),
-        start_time: this.state.startTime,
-        end_time: this.state.endTime
+        start_time: moment(this.state.startTime).format("YYYY-MM-DD h:mm:ss"),
+        end_time: moment(this.state.endTime).format("YYYY-MM-DD h:mm:ss")
       }
-      this.addNewEvent(formPayload);
+      this.addNewEvent(formPayload)
       this.handleClearForm(event)
     }
   }
@@ -76,9 +77,8 @@ class EventNewFormContainer extends React.Component {
     event.preventDefault()
     this.setState({
       eventName: "",
-      startTime: new Date().toISOString().slice(0, -10) +"00",
-      endTime: new Date().toISOString().slice(0, -10) +"00",
-      spaces: [],
+      startTime: moment().format('YYYY-MM-DDThh:00'),
+      endTime: moment().format('YYYY-MM-DDThh:00'),
       errors: {}
     })
   }
@@ -99,6 +99,7 @@ class EventNewFormContainer extends React.Component {
   }
 
   componentDidMount() {
+
     fetch('http://localhost:3000/api/v1/spaces')
       .then(response => {
         if (response.ok) {
@@ -119,6 +120,7 @@ class EventNewFormContainer extends React.Component {
   }
 
   render(){
+    console.log(moment(this.state.startTime).format("YYYY-MM-DD h:mm:ss"))
     let errorDiv
     let errorItems
 

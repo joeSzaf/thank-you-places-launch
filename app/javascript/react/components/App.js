@@ -6,6 +6,7 @@ import SpaceShowContainer from '../containers/SpaceShowContainer'
 import SpaceNewFormContainer from '../containers/SpaceNewFormContainer'
 import EventsContainer from '../containers/EventsContainer'
 import EventShowContainer from '../containers/EventShowContainer'
+import EventNewFormContainer from '../containers/EventNewFormContainer'
 
 export const App = (props) => {
   return (
@@ -15,6 +16,7 @@ export const App = (props) => {
         <Route path='/spaces/new' component={SpaceNewFormContainer} />
         <Route path='/spaces/:id' component={SpaceShowContainer} />
         <Route path='/spaces' component={SpacesContainer} />
+        <Route path='/events/new' component={EventNewFormContainer} />
         <Route path='/events/:id' component={EventShowContainer} />
         <Route path='/events' component={EventsContainer} />
       </Router>
