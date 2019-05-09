@@ -24,7 +24,6 @@ class EventNewFormContainer extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value)
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -120,7 +119,6 @@ class EventNewFormContainer extends React.Component {
   }
 
   render(){
-    console.log(moment(this.state.startTime).format("YYYY-MM-DD h:mm:ss"))
     let errorDiv
     let errorItems
 

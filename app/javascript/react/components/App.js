@@ -7,12 +7,13 @@ import SpaceNewFormContainer from '../containers/SpaceNewFormContainer'
 import EventsContainer from '../containers/EventsContainer'
 import EventShowContainer from '../containers/EventShowContainer'
 import EventNewFormContainer from '../containers/EventNewFormContainer'
+import Dashboard from '../containers/Dashboard'
 
 export const App = (props) => {
   return (
     <div>
       <Router history={browserHistory}>
-        <Route path='/' component={SpacesContainer} />
+        <Route path='/' component={Dashboard} />
         <Route path='/spaces/new' component={SpaceNewFormContainer} />
         <Route path='/spaces/:id' component={SpaceShowContainer} />
         <Route path='/spaces' component={SpacesContainer} />
