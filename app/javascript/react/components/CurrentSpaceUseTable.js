@@ -50,17 +50,18 @@ class CurrentSpaceUseTable extends Component {
       let eventName = "<open>"
       let startTime = "-"
       let endTime = "-"
+      let className = "open-space"
 
       if (location.eventName){
         eventName = location.eventName
         startTime = moment(location.startTime).local().format("hh:mm A")
         endTime = moment(location.endTime).local().format("hh:mm A")
+        className = ""
       }
-      console.log(startTime)
 
       return(
-        <tr key={index}>
-          <td>{location.name}</td>
+        <tr key={index} className="">
+          <td className={className}>{location.name}</td>
           <td>{eventName}</td>
           <td>{startTime}</td>
           <td>{endTime}</td>
