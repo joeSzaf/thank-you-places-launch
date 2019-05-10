@@ -61,7 +61,7 @@
 .dashboard-content-area {
   position: absolute;
   top: 45px;
-  margin-left: 280px;
+  left: 280px;
   padding: 10px;
   padding-left: 15px;
   bottom: 0;
