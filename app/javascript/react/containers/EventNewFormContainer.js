@@ -11,8 +11,8 @@ class EventNewFormContainer extends React.Component {
     this.state = {
       eventName: "",
       eventSpace: "",
-      startTime: moment().format('YYYY-MM-DDThh:00'),
-      endTime: moment().format('YYYY-MM-DDThh:00'),
+      startTime: moment().format('YYYY-MM-DDTHH:00'),
+      endTime: moment().format('YYYY-MM-DDTHH:00'),
       spaces: [],
       errors: {}
     }
@@ -64,8 +64,8 @@ class EventNewFormContainer extends React.Component {
       let formPayload = {
         name: this.state.eventName,
         space_id: parseInt(this.state.eventSpace),
-        start_time: moment(this.state.startTime).format("YYYY-MM-DD h:mm:ss"),
-        end_time: moment(this.state.endTime).format("YYYY-MM-DD h:mm:ss")
+        start_time: moment(this.state.startTime).format(),
+        end_time: moment(this.state.endTime).format()
       }
       this.addNewEvent(formPayload)
       this.handleClearForm(event)

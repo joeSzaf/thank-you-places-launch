@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import CurrentSpaceUseTable from "../components/CurrentSpaceUseTable"
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -15,6 +17,7 @@ class Home extends Component {
         <h3>This is where a cool overview will go</h3>
         <p>I am thinking of having all the spaces here showing what event is happening this hour and the next hour</p>
         <p>Maybe a cool button that will randomly select and present the user a space that is not in use?</p>
+        <CurrentSpaceUseTable />
       </div>
     )
   }

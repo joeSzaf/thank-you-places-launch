@@ -13,18 +13,18 @@ class EventShowContainer extends Component {
     fetch(`/api/v1/events/${event_id}.json`)
     .then(response => {
       if (response.ok) {
-        return response;
+        return response
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-        throw(error);
+            error = new Error(errorMessage)
+        throw(error)
       }
     })
     .then(response => response.json())
     .then(body => {
       this.setState({ event: body.event })
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
