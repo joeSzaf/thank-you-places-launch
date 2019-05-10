@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'spaces#index'
+  root 'homes#index'
   devise_for :users
 
   resources :spaces, only: [:index, :show, :new]

@@ -1,27 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Router, browserHistory, Route, IndexRoute } from 'react-router'
 
-import SpacesContainer from '../containers/SpacesContainer'
-import SpaceShowContainer from '../containers/SpaceShowContainer'
-import SpaceNewFormContainer from '../containers/SpaceNewFormContainer'
-import EventsContainer from '../containers/EventsContainer'
-import EventShowContainer from '../containers/EventShowContainer'
-import EventNewFormContainer from '../containers/EventNewFormContainer'
+import Dashboard from '../containers/Dashboard'
 
-export const App = (props) => {
-  return (
-    <div>
-      <Router history={browserHistory}>
-        <Route path='/' component={SpacesContainer} />
-        <Route path='/spaces/new' component={SpaceNewFormContainer} />
-        <Route path='/spaces/:id' component={SpaceShowContainer} />
-        <Route path='/spaces' component={SpacesContainer} />
-        <Route path='/events/new' component={EventNewFormContainer} />
-        <Route path='/events/:id' component={EventShowContainer} />
-        <Route path='/events' component={EventsContainer} />
-      </Router>
-    </div>
-  )
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
+
+  render(){
+    return(
+      <div className="app">
+        <Router history={browserHistory}>
+          <Route path='/' component={Dashboard} />
+          <Route path='/spaces/new' component={Dashboard} />
+          <Route path='/spaces/:id' component={Dashboard} />
+          <Route path='/spaces' component={Dashboard} />
+          <Route path='/events/new' component={Dashboard} />
+          <Route path='/events/:id' component={Dashboard} />
+          <Route path='/events' component={Dashboard} />
+        </Router>
+      </div>
+    )
+  }
 }
 
 export default App

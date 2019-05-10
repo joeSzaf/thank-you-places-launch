@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-wrapper {
+  background: lightgrey;
+}
+
+.dashboard-sidemenu {
+  background: #471527;
+  width: 280px;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+}
+
+.dashboard-sidemenu-nav {
+  padding-top: 100px;
+}
+
+.nav-link {
+  display: block;
+  color: #DCDCDC;
+  text-decoration: none;
+  padding: 15px 30px;
+  font-weight: 300;
+}
+
+.nav-link:hover {
+  background: #8C596C;
+  color: #DCDCDC;
+  border-left: 5px solid #FFC96E;
+  padding: 15px 30px 15px 25px;
+}
+
+.nav-link:hover .fa {
+  color: #FFC96E;
+}
+
+.nav-link .fa {
+  color: #DCDCDC;
+  font-size: 1.4rem;
+  margin-right: 0.8rem;
+  display: inline-block;
+  width: 30px;
+  position: relative;
+  top: 2px;
+}
+
+.nav-link.active {
+  background: #35101D;
+  color: #DCDCDC;
+  border-left: 5px solid #FFB638;
+  padding: 15px 30px 15px 25px;
+}
+
+.nav-link.active .fa {
+  color: #FFB638;
+}
+
+.dashboard-content-area {
+  position: absolute;
+  top: 45px;
+  margin-left: 280px;
+  padding: 10px;
+  padding-left: 15px;
+  bottom: 0;
+  overflow: scroll;
+  right: 0;
+}
