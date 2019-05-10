@@ -4,7 +4,16 @@ class Api::V1::EventsController < ApiController
   end
 
   def show
-    render json: { event: Event.find(params[:id]) }
+    if params[:id] == "now"
+      now = Time.now.utc.iso8601
+      current_events = Event.where("start_time <= ? AND end_time >= ?", now, now)
+      render json: {
+        current_events: current_events,
+        locations: serialized_spaces
+      }
+    else
+      render json: { event: Event.find(params[:id]) }
+    end
   end
 
   def create
@@ -23,5 +32,8 @@ class Api::V1::EventsController < ApiController
 
   def serialized_events
     ActiveModel::Serializer::ArraySerializer.new(Event.all, each_serializer: EventSerializer)
+  end
+  def serialized_spaces
+    ActiveModel::Serializer::ArraySerializer.new(Space.all, each_serializer: SpaceSerializer)
   end
 end
