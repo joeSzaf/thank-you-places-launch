@@ -7,7 +7,7 @@
 }
 
 .dashboard-sidemenu {
-  background: #2C273E;
+  background: #471527;
   width: 280px;
   position: absolute;
   top: 45px;
@@ -18,27 +18,27 @@
   padding-top: 100px;
 }
 
-.dashboard-sidemenu-nav a {
+.nav-link {
   display: block;
-  color: grey;
+  color: #DCDCDC;
   text-decoration: none;
   padding: 15px 30px;
   font-weight: 300;
 }
 
-.dashboard-sidemenu-nav a:hover {
-  background: #252133;
-  color: lightgrey;
-  border-left: 5px solid #92CF48;
+.nav-link:hover {
+  background: #8C596C;
+  color: #DCDCDC;
+  border-left: 5px solid #FFC96E;
   padding: 15px 30px 15px 25px;
 }
 
-.dashboard-sidemenu-nav a:hover .fa {
-  color: #92CF48;
+.nav-link:hover .fa {
+  color: #FFC96E;
 }
 
-.dashboard-sidemenu-nav a .fa {
-  color: grey;
+.nav-link .fa {
+  color: #DCDCDC;
   font-size: 1.4rem;
   margin-right: 0.8rem;
   display: inline-block;
@@ -47,21 +47,24 @@
   top: 2px;
 }
 
-.dashboard-sidemenu-nav a.active {
-  background: #252133;
-  color: lightgrey;
-  border-left: 5px solid #92CF48;
+.nav-link.active {
+  background: #35101D;
+  color: #DCDCDC;
+  border-left: 5px solid #FFB638;
   padding: 15px 30px 15px 25px;
 }
 
-.dashboard-sidemenu-nav a.active .fa {
-  color: #92CF48;
+.nav-link.active .fa {
+  color: #FFB638;
 }
 
 .dashboard-content-area {
   position: absolute;
   top: 45px;
   margin-left: 280px;
+  padding: 10px;
   padding-left: 15px;
   bottom: 0;
+  overflow: scroll;
+  right: 0;
 }

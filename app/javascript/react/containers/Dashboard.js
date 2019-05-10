@@ -1,43 +1,55 @@
 import React, { Component } from 'react'
+import { Router, browserHistory, Route, IndexRoute } from 'react-router'
 
-import Table from '../components/Table'
+import SpacesContainer from '../containers/SpacesContainer'
+import SpaceShowContainer from '../containers/SpaceShowContainer'
+import SpaceNewFormContainer from '../containers/SpaceNewFormContainer'
+import EventsContainer from '../containers/EventsContainer'
+import EventShowContainer from '../containers/EventShowContainer'
+import EventNewFormContainer from '../containers/EventNewFormContainer'
+
+import SideMenu from '../containers/SideMenu'
+import Home from '../containers/Home'
+
 
 class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentView: "nav-/"
     }
+    this.handleNavChange = this.handleNavChange.bind(this)
+  }
+
+  handleNavChange(event) {
+    this.setState( { currentView: event.target.id } )
   }
 
   render(){
+    let content
+
+    if (this.state.currentView === 'nav-spaces') {
+      content = <SpacesContainer />
+    } else if (this.state.currentView === 'nav-events') {
+      content = <EventsContainer />
+    } else if (this.state.currentView === 'nav-addSpace') {
+      content = <SpaceNewFormContainer />
+    } else if (this.state.currentView === 'nav-addEvent') {
+      content = <EventNewFormContainer />
+    } else {
+      content = <Home />
+    }
+
     return(
       <div className="dashboard-wrapper">
-        <section id="sideMenu" className="dashboard-sidemenu">
-          <nav className="dashboard-sidemenu-nav">
-            <a href='#' className="active">
-              <i className="fa fa-home"></i>Item</a>
-            <a href='#'><i className="fa fa-home"></i> Item</a>
-            <a href='#'><i className="fa fa-plane"></i> Item</a>
-            <a href='#'><i className="fa fa-home"></i> Item</a>
-            <a href='#'><i className="fa fa-home"></i> Item</a>
-            <a href='#'><i className="fa fa-home"></i> Item</a>
-          </nav>
+        <SideMenu
+          currentView={this.state.currentView}
+          onClick={this.handleNavChange}
+        />
+        <section className="dashboard-content-area">
+          {content}
         </section>
 
-        <section className="dashboard-content-area">
-          <div>
-            <h1>Dashboard</h1>
-            <p>Welcome to Thank you places</p>
-          </div>
-          <div className="row">
-            <div className="large-6 columns">
-              <Table />
-            </div>
-            <div className="large-6 columns">
-              <Table />
-            </div>
-          </div>
-        </section>
       </div>
     )
   }
