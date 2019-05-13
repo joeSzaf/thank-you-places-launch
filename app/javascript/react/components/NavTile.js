@@ -8,7 +8,7 @@ const NavTile = props => {
   }
 
   return(
-    <div id={`nav-${props.view}`} to={`${props.view}`} className={`nav-link ${displayClass}`} onClick={props.handleClickMethod}>
+    <div to={`nav-${props.view}`} className={`nav-link ${displayClass}`} onClick={props.handleClickMethod}>
       <i className={props.iconClass}></i>{props.label}
     </div>
   )

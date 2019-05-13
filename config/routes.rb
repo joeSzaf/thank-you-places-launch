@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :spaces, only: [:index, :show, :create]
-      resources :events, only: [:index, :show, :create]
+      resources :spaces, only: [:index, :show, :create, :update]
+      resources :events, only: [:index, :show, :create, :update]
     end
   end
 
