@@ -9,7 +9,7 @@ class SpaceShowContainer extends Component {
   }
 
   componentDidMount() {
-    let space_id = this.props.params.id
+    let space_id = this.props.id
     fetch(`/api/v1/spaces/${space_id}.json`)
     .then(response => {
       if (response.ok) {
@@ -33,6 +33,8 @@ class SpaceShowContainer extends Component {
         <h1 className=""> { this.state.space.name } </h1>
         <h3> { this.state.space.location } </h3>
         <p> { this.state.space.description } </p>
+        <button to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
+        <button to={"link-editSpace"} onClick={this.props.handleNavChange}>Edit</button>
       </div>
     )
   }

@@ -18,6 +18,11 @@ class Api::V1::SpacesController < ApiController
     end
   end
 
+  def update
+    space = Space.find(params[:id])
+    space.update!(space_params)
+  end
+
   def space_params
     params.require(:space).permit(:name, :location, :capacity, :description)
   end

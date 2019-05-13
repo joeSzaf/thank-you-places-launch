@@ -14,13 +14,13 @@ class App extends Component {
     return(
       <div className="app">
         <Router history={browserHistory}>
-          <Route path='/' component={Dashboard} />
           <Route path='/spaces/new' component={Dashboard} />
           <Route path='/spaces/:id' component={Dashboard} />
           <Route path='/spaces' component={Dashboard} />
           <Route path='/events/new' component={Dashboard} />
           <Route path='/events/:id' component={Dashboard} />
           <Route path='/events' component={Dashboard} />
+          <Route path='/' component={Dashboard} />
         </Router>
       </div>
     )

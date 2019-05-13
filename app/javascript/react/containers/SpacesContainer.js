@@ -42,13 +42,13 @@ class SpacesContainer extends Component {
             location={space.location}
             capacity={space.capacity}
             description={space.description}
+            onClick={this.props.onClick}
           />
         )
       })
 
     return(
       <div className="">
-       <p>Hello from the Spaces Index Page!</p>
        {spaces}
       </div>
     )
