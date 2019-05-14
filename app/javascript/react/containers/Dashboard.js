@@ -8,6 +8,7 @@ import SpaceNewFormContainer from '../containers/SpaceNewFormContainer'
 import EventsContainer from '../containers/EventsContainer'
 import EventShowContainer from '../containers/EventShowContainer'
 import EventNewFormContainer from '../containers/EventNewFormContainer'
+import EventEditContainer from '../containers/EventEditContainer'
 
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
@@ -23,6 +24,7 @@ class Dashboard extends Component {
     }
     this.handleNavChange = this.handleNavChange.bind(this)
     this.handleSpaceShowClick = this.handleSpaceShowClick.bind(this)
+    this.handleEventShowClick = this.handleEventShowClick.bind(this)
   }
 
   handleNavChange(event) {
@@ -36,6 +38,13 @@ class Dashboard extends Component {
     } )
   }
 
+  handleEventShowClick(event) {
+    this.setState( {
+      selectedEventId: event.target.attributes.to.textContent,
+      currentView: event.target.classList[0]
+    } )
+  }
+
   render(){
     let content
 
@@ -45,7 +54,10 @@ class Dashboard extends Component {
           onClick={this.handleSpaceShowClick}
         />
     } else if (this.state.currentView === 'nav-events') {
-      content = <EventsContainer />
+      content =
+        <EventsContainer
+          onClick={this.handleEventShowClick}
+        />
     } else if (this.state.currentView === 'nav-addSpace') {
       content = <SpaceNewFormContainer />
     } else if (this.state.currentView === 'nav-addEvent') {
@@ -56,10 +68,22 @@ class Dashboard extends Component {
           id={this.state.selectedSpaceId}
           handleNavChange={this.handleNavChange}
         />
+    } else if (this.state.currentView === 'link-showEvent') {
+      content =
+        <EventShowContainer
+          id={this.state.selectedEventId}
+          handleNavChange={this.handleNavChange}
+        />
     } else if (this.state.currentView === 'link-editSpace') {
       content =
         <SpaceEditContainer
           id={this.state.selectedSpaceId}
+          handleNavChange={this.handleNavChange}
+        />
+    } else if (this.state.currentView === 'link-editEvent') {
+      content =
+        <EventEditContainer
+          id={this.state.selectedEventId}
           handleNavChange={this.handleNavChange}
         />
     } else {

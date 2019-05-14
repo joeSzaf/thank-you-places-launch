@@ -20,4 +20,4 @@ const SpaceSelectMenu = props => {
   )
 }
 
-export default SpaceSelectMenu;
+export default SpaceSelectMenu

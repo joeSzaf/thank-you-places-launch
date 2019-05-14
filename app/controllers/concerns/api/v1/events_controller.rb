@@ -26,6 +26,11 @@ class Api::V1::EventsController < ApiController
     end
   end
 
+  def update
+    event = Event.find(params[:id])
+    event.update!(event_params)
+  end
+
   def event_params
     params.require(:event).permit(:name, :space_id, :start_time, :end_time, :description)
   end
