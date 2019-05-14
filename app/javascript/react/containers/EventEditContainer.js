@@ -1,27 +1,49 @@
 import React, { Component } from 'react'
 
 import TextField from '../components/TextField'
+import DateTimeField from '../components/DateTimeField'
+import SpaceSelectMenu from '../components/SpaceSelectMenu'
+import moment from 'moment'
 
-class SpaceEditContainer extends Component {
+class EventEditContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      spaceName: '',
-      spaceLocation: '',
-      spaceCapacity: '',
-      spaceDescription: '',
+      eventName: "",
+      eventSpaceId: "",
+      startTime: "",
+      endTime: "",
+      eventDescription: "",
+      spaces: [],
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleClearForm = this.handleClearForm.bind(this)
     this.validateInput = this.validateInput.bind(this)
-    this.addNewSpace = this.addNewSpace.bind(this)
+    this.editEvent = this.editEvent.bind(this)
   }
 
   componentDidMount() {
-    let space_id = this.props.id
-    fetch(`/api/v1/spaces/${space_id}.json`)
+    fetch('http://localhost:3000/api/v1/spaces')
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+        spaces: body.spaces
+      })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
+
+    let event_id = this.props.id
+    fetch(`/api/v1/events/${event_id}.json`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -33,14 +55,22 @@ class SpaceEditContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      let description
+      if (body.event.description){
+        description = body.event.description
+      } else {
+        description = ""
+      }
       this.setState({
-        spaceName: body.space.name,
-        spaceLocation: body.space.location,
-        spaceCapacity: body.space.capacity,
-        spaceDescription: body.space.description
+        eventName: body.event.name,
+        startTime: moment(body.event.start_time).format('YYYY-MM-DDTHH:00') ,
+        endTime: moment(body.event.end_time).format('YYYY-MM-DDTHH:00'),
+        eventSpaceId: body.event.space_id,
+        eventDescription: description
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
+
   }
 
 
@@ -49,8 +79,8 @@ class SpaceEditContainer extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  addNewSpace(formPayload){
-    fetch(`/api/v1/spaces/${this.props.id}`,{
+  editEvent(formPayload){
+    fetch(`/api/v1/events/${this.props.id}`,{
       credentials: 'same-origin',
       method: 'PUT',
       body: JSON.stringify(formPayload),
@@ -81,43 +111,23 @@ class SpaceEditContainer extends Component {
   handleSubmit(event) {
     event.preventDefault()
     if (
-      this.validateInput(this.state.spaceName) &&
-      this.validateInput(this.state.spaceLocation) &&
-      this.validateInput(this.state.spaceDescription)
+      this.validateInput(this.state.eventName)
     ) {
       let formPayload = {
-        name: this.state.spaceName,
-        location: this.state.spaceLocation,
-        capacity: this.state.spaceCapacity,
-        description: this.state.spaceDescription,
+        name: this.state.eventName,
+        space_id: parseInt(this.state.eventSpaceId),
+        description: this.state.eventDescription,
+        start_time: moment(this.state.startTime).format(),
+        end_time: moment(this.state.endTime).format()
       }
-      this.addNewSpace(formPayload)
+      this.editEvent(formPayload)
     }
-  }
-
-  handleClearForm(event) {
-    event.preventDefault()
-    this.setState({
-      spaceName: '',
-      spaceLocation: '',
-      spaceCapacity: '',
-      spaceDescription: '',
-      errors: {}
-    })
   }
 
   validateInput(selection){
     if (selection.trim() === '') {
-      if (selection === this.state.spaceName) {
-        let newError = { nameError: 'You must enter a name for the space.' }
-        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      }
-      else if (selection === this.state.spaceLocation) {
-        let newError = { nameError: 'You must enter a location (like an address) for this space.' }
-        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      }
-      else if (selection === this.state.spaceDescription) {
-        let newError = { nameError: 'You must enter a description for the space.' }
+      if (selection === this.state.eventName) {
+        let newError = { nameError: 'You must enter a name for the event.' }
         this.setState({ errors: Object.assign({}, this.state.errors, newError) })
       }
       return false
@@ -147,29 +157,41 @@ class SpaceEditContainer extends Component {
         <form className="" onSubmit={this.handleSubmit}>
           {errorDiv}
           <TextField
-            name="spaceName"
-            content={this.state.spaceName}
-            label="Space Name:"
+            name="eventName"
+            content={this.state.eventName}
+            label="Event Name:"
             handleChangeMethod={this.handleChange}
           />
+
           <TextField
-            name="spaceLocation"
-            content={this.state.spaceLocation}
-            label="Location of Space:"
-            handleChangeMethod={this.handleChange}
-          />
-          <TextField
-            name="spaceCapacity"
-            content={this.state.spaceCapacity}
-            label="Capacity of Space:"
-            handleChangeMethod={this.handleChange}
-          />
-          <TextField
-            name="spaceDescription"
-            content={this.state.spaceDescription}
+            name="eventDescription"
+            content={this.state.eventDescription}
             label="Description:"
             handleChangeMethod={this.handleChange}
           />
+
+          <SpaceSelectMenu
+              name="eventSpace"
+              content={this.state.eventSpaceId}
+              label="Space:"
+              options={this.state.spaces}
+              handleChangeMethod={this.handleChange}
+            />
+
+          <DateTimeField
+            name="startTime"
+            content={this.state.startTime}
+            label="Start Time:"
+            handleChangeMethod={this.handleChange}
+          />
+
+          <DateTimeField
+            name="endTime"
+            content={this.state.endTime}
+            label="End Time:"
+            handleChangeMethod={this.handleChange}
+          />
+
           <div className="button-group">
             <input className="button" type="submit" value="Update" />
           </div>
@@ -181,4 +203,4 @@ class SpaceEditContainer extends Component {
   }
 }
 
-export default SpaceEditContainer
+export default EventEditContainer

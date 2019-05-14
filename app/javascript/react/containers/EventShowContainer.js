@@ -9,7 +9,7 @@ class EventShowContainer extends Component {
   }
 
   componentDidMount() {
-    let event_id = this.props.params.id
+    let event_id = this.props.id
     fetch(`/api/v1/events/${event_id}.json`)
     .then(response => {
       if (response.ok) {
@@ -34,6 +34,8 @@ class EventShowContainer extends Component {
         <p> { this.state.event.description } </p>
         <p> { this.state.event.start_time } </p>
         <p> { this.state.event.end_time } </p>
+        <button to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
+        <button to={"link-editEvent"} onClick={this.props.handleNavChange}>Edit</button>
       </div>
     )
   }

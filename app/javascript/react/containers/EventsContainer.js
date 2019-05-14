@@ -40,13 +40,13 @@ class EventsContainer extends Component {
             id={event.id}
             name={event.name}
             start_time={event.start_time}
+            onClick={this.props.onClick}
           />
         )
       })
 
     return(
       <div className="">
-       <p>Hello from the Event Index Page!</p>
        {events}
       </div>
     )
