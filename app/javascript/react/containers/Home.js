@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import CurrentSpaceUseTable from "../components/CurrentSpaceUseTable"
+import EventTableWeek from "../components/EventTableWeek"
 
 class Home extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Home extends Component {
   render(){
     return(
       <div className="home">
+        <EventTableWeek />
         <h1>Dashboard</h1>
         <p>Welcome to Thank you places</p>
         <h3>This is where a cool overview will go</h3>
