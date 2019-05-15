@@ -4,4 +4,8 @@ class Event < ApplicationRecord
   validates :end_time, presence: true
 
   belongs_to :space
+
+  def space_name
+    self.space.name
+  end
 end
