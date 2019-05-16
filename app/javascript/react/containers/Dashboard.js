@@ -9,6 +9,7 @@ import EventsContainer from '../containers/EventsContainer'
 import EventShowContainer from '../containers/EventShowContainer'
 import EventNewFormContainer from '../containers/EventNewFormContainer'
 import EventEditContainer from '../containers/EventEditContainer'
+import TopBar from '../components/TopBar'
 
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
@@ -97,9 +98,13 @@ class Dashboard extends Component {
           currentView={this.state.currentView}
           onClick={this.handleNavChange}
         />
-        <section className="dashboard-content-area">
+
+      <section className="dashboard-content-wrapper">
+        <TopBar />
+        <div className="content-wrapper">
           {content}
-        </section>
+        </div>
+      </section>
 
       </div>
     )

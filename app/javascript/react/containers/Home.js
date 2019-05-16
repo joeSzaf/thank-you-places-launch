@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import CurrentSpaceUseTable from "../components/CurrentSpaceUseTable"
 import EventTableWeek from "../components/EventTableWeek"
+import PatronManagerImporter from "../containers/PatronManagerImporter"
 
 class Home extends Component {
   constructor(props) {

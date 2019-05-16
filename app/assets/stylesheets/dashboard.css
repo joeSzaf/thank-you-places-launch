@@ -15,7 +15,7 @@ p {
   background: #471527;
   width: 280px;
   position: absolute;
-  top: 45px;
+  top: 0px;
   bottom: 0;
 }
 
@@ -63,16 +63,25 @@ p {
   color: #FFB638;
 }
 
-.dashboard-content-area {
+.dashboard-content-wrapper {
   position: absolute;
-  top: 45px;
+  top: 0px;
   left: 280px;
-  padding: 10px;
-  padding-left: 15px;
   bottom: 0;
-  overflow: scroll;
   right: 0;
   background-color: #FFF8EC;
+}
+
+.content-wrapper {
+  overflow-y: scroll;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  width: 100%;
+}
+
+.content-container {
+  padding: 20px;
 }
 
 h1.title-h1 {
