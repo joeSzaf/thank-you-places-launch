@@ -11,9 +11,13 @@ class EventEditContainer extends Component {
     this.state = {
       eventName: "",
       eventSpaceId: "",
+      eventSpaceName: "",
       startTime: "",
       endTime: "",
       eventDescription: "",
+      contact_name: "",
+      tech_name: "",
+      md_name: "",
       spaces: [],
       errors: {}
     }
@@ -66,6 +70,10 @@ class EventEditContainer extends Component {
         startTime: moment(body.event.start_time).format('YYYY-MM-DDTHH:00') ,
         endTime: moment(body.event.end_time).format('YYYY-MM-DDTHH:00'),
         eventSpaceId: body.event.space_id,
+        eventSpaceName: body.event.space_name,
+        contact_name: body.event.contact_name,
+        tech_name: body.event.tech_name,
+        md_name: body.event.md_name,
         eventDescription: description
       })
     })
@@ -118,8 +126,12 @@ class EventEditContainer extends Component {
         space_id: parseInt(this.state.eventSpaceId),
         description: this.state.eventDescription,
         start_time: moment(this.state.startTime).format(),
-        end_time: moment(this.state.endTime).format()
+        end_time: moment(this.state.endTime).format(),
+        contact_name: this.state.contact_name,
+        tech_name: this.state.tech_name,
+        md_name: this.state.md_name
       }
+      debugger
       this.editEvent(formPayload)
     }
   }
@@ -151,7 +163,7 @@ class EventEditContainer extends Component {
     }
 
     return(
-      <div className="">
+      <div className="content-container">
         <h1 className=""> EDIT { this.state.spaceName } </h1>
 
         <form className="" onSubmit={this.handleSubmit}>
@@ -192,12 +204,34 @@ class EventEditContainer extends Component {
             handleChangeMethod={this.handleChange}
           />
 
+          <TextField
+            name="contact_name"
+            content={this.state.contact_name}
+            label="Contact Name:"
+            handleChangeMethod={this.handleChange}
+          />
+
+          <TextField
+            name="tech_name"
+            content={this.state.tech_name}
+            label="Tech Name:"
+            handleChangeMethod={this.handleChange}
+          />
+
+          <TextField
+            name="md_name"
+            content={this.state.md_name}
+            label="Musical Director Name:"
+            handleChangeMethod={this.handleChange}
+          />
+
+
           <div className="button-group">
-            <input className="button" type="submit" value="Update" />
+            <input className="button warning" type="submit" value="Update" />
           </div>
         </form>
 
-        <button to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
+        <button to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
       </div>
     )
   }

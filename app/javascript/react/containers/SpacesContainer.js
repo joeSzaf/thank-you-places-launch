@@ -48,8 +48,9 @@ class SpacesContainer extends Component {
       })
 
     return(
-      <div className="">
-       {spaces}
+      <div className="content-container">
+        <h1 className="title-h1">Your Places</h1>
+        {spaces}
       </div>
     )
   }

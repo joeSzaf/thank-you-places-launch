@@ -141,8 +141,8 @@ class SpaceEditContainer extends Component {
     }
 
     return(
-      <div className="">
-        <h1 className=""> EDIT { this.state.spaceName } </h1>
+      <div className="content-container">
+        <h1 className="title-h1"><strong>EDIT</strong> { this.state.spaceName }</h1>
 
         <form className="" onSubmit={this.handleSubmit}>
           {errorDiv}

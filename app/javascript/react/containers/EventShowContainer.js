@@ -29,7 +29,7 @@ class EventShowContainer extends Component {
 
   render() {
     return(
-      <div className="">
+      <div className="content-container">
         <h1 className=""> { this.state.event.name } </h1>
         <p> { this.state.event.description } </p>
         <p> { this.state.event.start_time } </p>

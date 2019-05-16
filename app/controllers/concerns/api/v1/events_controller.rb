@@ -32,7 +32,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def event_params
-    params.require(:event).permit(:name, :space_id, :start_time, :end_time, :description)
+    params.require(:event).permit(:name, :space_id, :start_time, :end_time, :description, :contact_name, :tech_name, :md_name)
   end
 
   def serialized_events

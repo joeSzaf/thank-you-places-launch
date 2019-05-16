@@ -29,8 +29,8 @@ class SpaceShowContainer extends Component {
 
   render() {
     return(
-      <div className="">
-        <h1 className=""> { this.state.space.name } </h1>
+      <div className="content-container">
+        <h1 className="title-h1"> { this.state.space.name } </h1>
         <h3> { this.state.space.location } </h3>
         <p> { this.state.space.description } </p>
         <button to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>

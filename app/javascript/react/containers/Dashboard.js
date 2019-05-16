@@ -13,12 +13,13 @@ import EventEditContainer from '../containers/EventEditContainer'
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
 
+//font Clicker Script logomakr.com
 
 class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentView: this.props.currentView,
+      currentView: "nav-home",
       selectedSpaceId: "",
       selectedEventId: ""
     }

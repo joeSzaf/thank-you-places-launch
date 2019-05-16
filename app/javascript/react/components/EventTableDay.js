@@ -16,7 +16,7 @@ class EventTableDay extends Component {
     let rendered_events = this.state.events.map(event => {
       return(
         <tr>
-          <td>{event.name}</td>
+          <td onClick={this.props.onClick} className="link-showEvent" to={event.id}>{event.name}</td>
           <td>{moment(event.start_time).format("HH:mm")}-{moment(event.end_time).format("HH:mm")}</td>
           <td>{event.space_name}</td>
           <td>-</td>
@@ -26,7 +26,7 @@ class EventTableDay extends Component {
 
     return(
       <div>
-        <h3>{moment(this.state.date).format("dddd, MM/DD")}</h3>
+        <h4>{moment(this.state.date).format("dddd, MM/DD")}</h4>
         <table>
           <thead>
             <tr>
