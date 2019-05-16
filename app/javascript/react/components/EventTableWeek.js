@@ -69,13 +69,13 @@ class EventTableWeek extends Component {
         <EventTableDay
           date={day.date}
           events={day.events}
+          onClick={this.props.onClick}
         />
       )
     })
 
     return(
       <div>
-        <h3>Events this week!</h3>
         {weeks_schedule}
       </div>
     )

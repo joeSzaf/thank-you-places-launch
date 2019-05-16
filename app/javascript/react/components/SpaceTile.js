@@ -1,14 +1,16 @@
 import React from 'react'
 
 const SpaceTile = props => {
-  
+
   return(
-    <div>
-      <h1 onClick={props.onClick} className="link-showSpace" to={props.id}> {props.name} </h1>
-      <h2> { props.location } </h2>
-      <p> { props.description } </p>
+
+    <div className="callout space-callout">
       <hr />
+      <h4 className="title-h2 space-index-space-name" onClick={props.onClick} className="link-showSpace" to={props.id}> {props.name}</h4>
+      <p>Location: { props.location }</p>
+      <p>Description: { props.description }</p>
     </div>
+
   )
 }
 

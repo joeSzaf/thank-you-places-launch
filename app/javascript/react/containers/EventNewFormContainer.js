@@ -10,9 +10,14 @@ class EventNewFormContainer extends React.Component {
     super(props);
     this.state = {
       eventName: "",
-      eventSpace: "",
+      eventSpaceId: "",
+      eventSpaceName: "",
       startTime: moment().format('YYYY-MM-DDTHH:00'),
       endTime: moment().format('YYYY-MM-DDTHH:00'),
+      eventDescription: "",
+      contact_name: "",
+      tech_name: "",
+      md_name: "",
       spaces: [],
       errors: {}
     }
@@ -63,10 +68,15 @@ class EventNewFormContainer extends React.Component {
     ) {
       let formPayload = {
         name: this.state.eventName,
-        space_id: parseInt(this.state.eventSpace),
+        space_id: parseInt(this.state.eventSpaceId),
+        description: this.state.eventDescription,
         start_time: moment(this.state.startTime).format(),
-        end_time: moment(this.state.endTime).format()
+        end_time: moment(this.state.endTime).format(),
+        contact_name: this.state.contact_name,
+        tech_name: this.state.tech_name,
+        md_name: this.state.md_name
       }
+      debugger
       this.addNewEvent(formPayload)
       this.handleClearForm(event)
     }
@@ -76,8 +86,15 @@ class EventNewFormContainer extends React.Component {
     event.preventDefault()
     this.setState({
       eventName: "",
-      startTime: moment().format('YYYY-MM-DDThh:00'),
-      endTime: moment().format('YYYY-MM-DDThh:00'),
+      eventSpaceId: "",
+      eventSpaceName: "",
+      startTime: moment().format('YYYY-MM-DDTHH:00'),
+      endTime: moment().format('YYYY-MM-DDTHH:00'),
+      eventDescription: "",
+      contact_name: "",
+      tech_name: "",
+      md_name: "",
+      spaces: [],
       errors: {}
     })
   }
@@ -130,41 +147,64 @@ class EventNewFormContainer extends React.Component {
     }
 
     return(
-      <form className="" onSubmit={this.handleSubmit}>
-      {errorDiv}
-        <TextField
-          name="eventName"
-          content={this.state.eventName}
-          label="Event Name:"
-          handleChangeMethod={this.handleChange}
-        />
-        <SpaceSelectMenu
-            name="eventSpace"
-            content={this.state.eventSpace}
-            label="Space:"
-            options={this.state.spaces}
+      <div className="content-container">
+        <h1 className="title-h1">Add a new event</h1>
+        <form className="" onSubmit={this.handleSubmit}>
+        {errorDiv}
+          <TextField
+            name="eventName"
+            content={this.state.eventName}
+            label="Event Name:"
+            handleChangeMethod={this.handleChange}
+          />
+          <SpaceSelectMenu
+              name="eventSpaceId"
+              content={this.state.eventSpaceId}
+              label="Space:"
+              options={this.state.spaces}
+              handleChangeMethod={this.handleChange}
+            />
+
+          <DateTimeField
+            name="startTime"
+            content={this.state.startTime}
+            label="Start Time:"
             handleChangeMethod={this.handleChange}
           />
 
-        <DateTimeField
-          name="startTime"
-          content={this.state.startTime}
-          label="Start Time:"
-          handleChangeMethod={this.handleChange}
-        />
+          <DateTimeField
+            name="endTime"
+            content={this.state.endTime}
+            label="End Time:"
+            handleChangeMethod={this.handleChange}
+          />
+          <TextField
+            name="contact_name"
+            content={this.state.contact_name}
+            label="Contact Name:"
+            handleChangeMethod={this.handleChange}
+          />
 
-        <DateTimeField
-          name="endTime"
-          content={this.state.endTime}
-          label="End Time:"
-          handleChangeMethod={this.handleChange}
-        />
+          <TextField
+            name="tech_name"
+            content={this.state.tech_name}
+            label="Tech Name:"
+            handleChangeMethod={this.handleChange}
+          />
 
-        <div className="button-group">
-          <button className="button" onClick={this.handleClearForm}>Clear</button>
-          <input className="button" type="submit" value="Submit Form" />
-        </div>
-      </form>
+          <TextField
+            name="md_name"
+            content={this.state.md_name}
+            label="Musical Director Name:"
+            handleChangeMethod={this.handleChange}
+          />
+
+          <div className="button-group">
+            <button className="button" onClick={this.handleClearForm}>Clear</button>
+            <input className="button" type="submit" value="Submit Form" />
+          </div>
+        </form>
+      </div>
     )
   }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import NavTile from "../components/NavTile"
 
+import tyPlacesLogo from '../../../assets/images/typlaces-logo.png'
+
 class SideMenu extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +16,7 @@ class SideMenu extends Component {
       {
         iconClass: "fa fa-home",
         label: "Home",
-        view: "/"
+        view: "home"
       },
       {
         iconClass: "fa fa-map",
@@ -59,6 +61,7 @@ class SideMenu extends Component {
 
     return(
       <section id="sideMenu" className="dashboard-sidemenu">
+        <img src={tyPlacesLogo} alt="tyPlaces" />
         <nav className="dashboard-sidemenu-nav">
           { navigation }
         </nav>

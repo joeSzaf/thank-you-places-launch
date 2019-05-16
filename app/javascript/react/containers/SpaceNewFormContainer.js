@@ -116,37 +116,40 @@ class SpaceNewFormContainer extends React.Component {
     }
 
     return(
-      <form className="" onSubmit={this.handleSubmit}>
-      {errorDiv}
-        <TextField
-          name="spaceName"
-          content={this.state.spaceName}
-          label="Space Name:"
-          handleChangeMethod={this.handleChange}
-        />
-        <TextField
-          name="spaceLocation"
-          content={this.state.spaceLocation}
-          label="Location of Space:"
-          handleChangeMethod={this.handleChange}
-        />
-        <TextField
-          name="spaceCapacity"
-          content={this.state.spaceCapacity}
-          label="Capacity of Space:"
-          handleChangeMethod={this.handleChange}
-        />
-        <TextField
-          name="spaceDescription"
-          content={this.state.spaceDescription}
-          label="Description:"
-          handleChangeMethod={this.handleChange}
-        />
-        <div className="button-group">
-          <button className="button" onClick={this.handleClearForm}>Clear</button>
-          <input className="button" type="submit" value="Submit Form" />
-        </div>
-      </form>
+      <div className="content-container">
+          <h1 className="title-h1">Add a new place</h1>
+          <form className="" onSubmit={this.handleSubmit}>
+          {errorDiv}
+            <TextField
+              name="spaceName"
+              content={this.state.spaceName}
+              label="Space Name:"
+              handleChangeMethod={this.handleChange}
+            />
+            <TextField
+              name="spaceLocation"
+              content={this.state.spaceLocation}
+              label="Location of Space:"
+              handleChangeMethod={this.handleChange}
+            />
+            <TextField
+              name="spaceCapacity"
+              content={this.state.spaceCapacity}
+              label="Capacity of Space:"
+              handleChangeMethod={this.handleChange}
+            />
+            <TextField
+              name="spaceDescription"
+              content={this.state.spaceDescription}
+              label="Description:"
+              handleChangeMethod={this.handleChange}
+            />
+            <div className="button-group">
+              <button className="button" onClick={this.handleClearForm}>Clear</button>
+              <input className="button" type="submit" value="Submit Form" />
+            </div>
+          </form>
+      </div>
     )
   }
 }

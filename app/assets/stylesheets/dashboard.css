@@ -1,9 +1,14 @@
 * {
   box-sizing: border-box;
+  color: #1D2529;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
 }
 
 .dashboard-wrapper {
-  background: lightgrey;
+  background-color: #FFF8EC;
 }
 
 .dashboard-sidemenu {
@@ -15,7 +20,7 @@
 }
 
 .dashboard-sidemenu-nav {
-  padding-top: 100px;
+  padding-top: 15px;
 }
 
 .nav-link {
@@ -67,4 +72,28 @@
   bottom: 0;
   overflow: scroll;
   right: 0;
+  background-color: #FFF8EC;
+}
+
+h1.title-h1 {
+  font-size: 2.2em;
+  font-family: 'Roboto Slab', serif;
+}
+
+h2.title-h2 {
+  font-size: 1.5em;
+  font-family: 'Roboto Slab', serif;
+}
+
+.callout {
+  padding: 5px;
+}
+h2:hover {
+  background: #FFF1DA;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.content-container {
+  margin-top: 16px;
 }

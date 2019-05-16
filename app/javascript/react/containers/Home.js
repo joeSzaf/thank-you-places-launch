@@ -12,13 +12,9 @@ class Home extends Component {
 
   render(){
     return(
-      <div className="home">
-        <EventTableWeek />
-        <h1>Dashboard</h1>
-        <p>Welcome to Thank you places</p>
-        <h3>This is where a cool overview will go</h3>
-        <p>I am thinking of having all the spaces here showing what event is happening this hour and the next hour</p>
-        <p>Maybe a cool button that will randomly select and present the user a space that is not in use?</p>
+      <div className="content-container home">
+        <h1 className="title-h1">Welcome to Thank you places</h1>
+        <p>A place to organize and plan your organizational needs.</p>
         <CurrentSpaceUseTable />
       </div>
     )
