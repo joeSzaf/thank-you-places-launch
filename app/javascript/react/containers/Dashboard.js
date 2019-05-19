@@ -11,6 +11,8 @@ import EventNewFormContainer from '../containers/EventNewFormContainer'
 import EventEditContainer from '../containers/EventEditContainer'
 import TopBar from '../components/TopBar'
 import PatronManagerImporter from '../containers/PatronManagerImporter'
+import TechsContainer from '../containers/TechsContainer'
+import TechShowContainer from '../containers/TechShowContainer'
 
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
@@ -23,11 +25,13 @@ class Dashboard extends Component {
     this.state = {
       currentView: "nav-home",
       selectedSpaceId: "",
-      selectedEventId: ""
+      selectedEventId: "",
+      selectedTechId: ""
     }
     this.handleNavChange = this.handleNavChange.bind(this)
     this.handleSpaceShowClick = this.handleSpaceShowClick.bind(this)
     this.handleEventShowClick = this.handleEventShowClick.bind(this)
+    this.handleTechShowClick = this.handleTechShowClick.bind(this)
   }
 
   handleNavChange(event) {
@@ -48,6 +52,13 @@ class Dashboard extends Component {
     } )
   }
 
+  handleTechShowClick(event) {
+    this.setState( {
+      selectedTechId: event.target.attributes.to.textContent,
+      currentView: event.target.classList[0]
+    } )
+  }
+
   render(){
     let content
 
@@ -61,6 +72,11 @@ class Dashboard extends Component {
         <EventsContainer
           onClick={this.handleEventShowClick}
         />
+    } else if (this.state.currentView === 'nav-techs') {
+      content =
+        <TechsContainer
+          onClick={this.handleTechShowClick}
+        />
     } else if (this.state.currentView === 'nav-addSpace') {
       content = <SpaceNewFormContainer />
     } else if (this.state.currentView === 'nav-addEvent') {
@@ -69,6 +85,12 @@ class Dashboard extends Component {
       content =
         <SpaceShowContainer
           id={this.state.selectedSpaceId}
+          handleNavChange={this.handleNavChange}
+        />
+    } else if (this.state.currentView === 'link-showTech') {
+      content =
+        <TechShowContainer
+          id={this.state.selectedTechId}
           handleNavChange={this.handleNavChange}
         />
     } else if (this.state.currentView === 'link-showEvent') {

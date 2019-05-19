@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_153454) do
+ActiveRecord::Schema.define(version: 2019_05_19_220952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(version: 2019_05_15_153454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contact_name", null: false
-    t.string "tech_name"
     t.string "md_name"
+    t.bigint "tech_director_id"
     t.index ["space_id"], name: "index_events_on_space_id"
+    t.index ["tech_director_id"], name: "index_events_on_tech_director_id"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -34,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_05_15_153454) do
     t.string "location", null: false
     t.integer "capacity"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tech_directors", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,4 +60,5 @@ ActiveRecord::Schema.define(version: 2019_05_15_153454) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "tech_directors"
 end

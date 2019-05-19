@@ -32,12 +32,13 @@ class Api::V1::EventsController < ApiController
   end
 
   def event_params
-    params.require(:event).permit(:name, :space_id, :start_time, :end_time, :description, :contact_name, :tech_name, :md_name)
+    params.require(:event).permit(:name, :space_id, :start_time, :end_time, :description, :contact_name, :tech_director_id, :md_name)
   end
 
   def serialized_events
     ActiveModel::Serializer::ArraySerializer.new(Event.all, each_serializer: EventSerializer)
   end
+  
   def serialized_spaces
     ActiveModel::Serializer::ArraySerializer.new(Space.all, each_serializer: SpaceSerializer)
   end

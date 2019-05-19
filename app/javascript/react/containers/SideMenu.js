@@ -34,6 +34,11 @@ class SideMenu extends Component {
         view: "events"
       },
       {
+        iconClass: "fa fa-user",
+        label: "Employees",
+        view: "techs"
+      },
+      {
         iconClass: "fa fa-calendar-plus",
         label: "Add Event",
         view: "addEvent"
