@@ -11,6 +11,7 @@ import EventNewFormContainer from '../containers/EventNewFormContainer'
 import EventEditContainer from '../containers/EventEditContainer'
 import TopBar from '../components/TopBar'
 import PatronManagerImporter from '../containers/PatronManagerImporter'
+import EmployeesContainer from '../containers/EmployeesContainer'
 
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
@@ -65,6 +66,8 @@ class Dashboard extends Component {
       content = <SpaceNewFormContainer />
     } else if (this.state.currentView === 'nav-addEvent') {
       content = <EventNewFormContainer />
+    } else if (this.state.currentView === 'nav-employees') {
+      content = <EmployeesContainer />
     } else if (this.state.currentView === 'link-showSpace') {
       content =
         <SpaceShowContainer

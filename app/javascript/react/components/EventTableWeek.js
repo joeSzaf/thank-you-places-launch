@@ -20,7 +20,7 @@ class EventTableWeek extends Component {
     for (let i = 1; i < 8; i++) {
       days_of_week.push(moment(start_of_week).add(i, 'days'))
     }
-
+    
     this.setState({
       dates: days_of_week
     })
