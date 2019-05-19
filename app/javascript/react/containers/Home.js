@@ -14,7 +14,7 @@ class Home extends Component {
   render(){
     return(
       <div className="content-container home">
-        <h1 className="title-h1">Welcome to Thank you places</h1>
+        <h1 className="title-h1">Welcome to Thank You Places!</h1>
         <p>A place to organize and plan your organizational needs.</p>
         <CurrentSpaceUseTable />
       </div>

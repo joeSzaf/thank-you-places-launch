@@ -38,6 +38,11 @@ class SideMenu extends Component {
         label: "Add Event",
         view: "addEvent"
       },
+      {
+        iconClass: "fa fa-file-import",
+        label: "Add PM Event",
+        view: "addPmEvent"
+      }
     ]
 
     let currentView = this.props.currentView

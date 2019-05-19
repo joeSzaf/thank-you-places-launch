@@ -1,6 +1,6 @@
-import React from 'react';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-import TextField from '../components/TextField';
+import React from 'react'
+import { Router, browserHistory, Route, IndexRoute } from 'react-router'
+import TextField from '../components/TextField'
 
 class SpaceNewFormContainer extends React.Component {
   constructor(props) {
@@ -145,8 +145,8 @@ class SpaceNewFormContainer extends React.Component {
               handleChangeMethod={this.handleChange}
             />
             <div className="button-group">
-              <button className="button" onClick={this.handleClearForm}>Clear</button>
-              <input className="button" type="submit" value="Submit Form" />
+              <button className="button secondary radius" onClick={this.handleClearForm}>Clear</button>
+              <input className="button radius" type="submit" value="Submit Form" />
             </div>
           </form>
       </div>

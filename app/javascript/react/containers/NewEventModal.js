@@ -1,19 +1,18 @@
-import React from 'react'
-import { Router, browserHistory, Route, IndexRoute } from 'react-router'
+import React, { Component } from 'react'
 import TextField from '../components/TextField'
 import DateTimeField from '../components/DateTimeField'
 import SpaceSelectMenu from '../components/SpaceSelectMenu'
 import moment from 'moment'
 
-class EventNewFormContainer extends React.Component {
+class NewEventModal extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      eventName: "",
+      eventName: this.props.name,
       eventSpaceId: "",
       eventSpaceName: "",
-      startTime: moment().format('YYYY-MM-DDTHH:00'),
-      endTime: moment().format('YYYY-MM-DDTHH:00'),
+      startTime: moment(this.props.date).format('YYYY-MM-DDTHH:mm'),
+      endTime: moment(this.props.date).add(2, 'hours').format('YYYY-MM-DDTHH:mm'),
       eventDescription: "",
       contact_name: "",
       tech_name: "",
@@ -52,7 +51,7 @@ class EventNewFormContainer extends React.Component {
         }
         })
         .then(response => {
-          browserHistory.push('/events')
+          this.props.handleClose()
         })
         .catch(error => {
           let formError = { formError: error.message }
@@ -76,9 +75,8 @@ class EventNewFormContainer extends React.Component {
         tech_name: this.state.tech_name,
         md_name: this.state.md_name
       }
-      debugger
+
       this.addNewEvent(formPayload)
-      this.handleClearForm(event)
     }
   }
 
@@ -129,13 +127,15 @@ class EventNewFormContainer extends React.Component {
       .then(response => response.json())
       .then(body => {
         this.setState({
-        spaces: body.spaces
-      })
+          spaces: body.spaces
+        })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render(){
+    const showHideClassName = this.props.show ? "modal display-block" : "modal display-none"
+
     let errorDiv
     let errorItems
 
@@ -147,67 +147,76 @@ class EventNewFormContainer extends React.Component {
     }
 
     return(
-      <div className="content-container">
-        <h1 className="title-h1">Add a new event</h1>
-        <form className="" onSubmit={this.handleSubmit}>
-        {errorDiv}
-          <TextField
-            name="eventName"
-            content={this.state.eventName}
-            label="Event Name:"
-            handleChangeMethod={this.handleChange}
-          />
-          <SpaceSelectMenu
-              name="eventSpaceId"
-              content={this.state.eventSpaceId}
-              label="Space:"
-              options={this.state.spaces}
-              handleChangeMethod={this.handleChange}
-            />
+      <div className={showHideClassName}>
+        <section className="modal-main">
+        <a className="close-modal" onClick={this.props.handleClose}>
+          <i className="fa fa-times"></i>
+        </a>
+          <p>{this.state.name}</p>
+          <div className="content-container">
+            <h1 className="title-h1">Add a new event</h1>
+            <form className="" onSubmit={this.handleSubmit}>
+            {errorDiv}
+              <TextField
+                name="eventName"
+                content={this.state.eventName}
+                label="Event Name:"
+                handleChangeMethod={this.handleChange}
+              />
+              <p> Space from PatronManager: {this.props.location}</p>
+              <SpaceSelectMenu
+                  name="eventSpaceId"
+                  content={this.state.eventSpaceId}
+                  label="Space:"
+                  options={this.state.spaces}
+                  handleChangeMethod={this.handleChange}
+                />
 
-          <DateTimeField
-            name="startTime"
-            content={this.state.startTime}
-            label="Start Time:"
-            handleChangeMethod={this.handleChange}
-          />
+              <DateTimeField
+                name="startTime"
+                content={this.state.startTime}
+                label="Start Time:"
+                handleChangeMethod={this.handleChange}
+              />
 
-          <DateTimeField
-            name="endTime"
-            content={this.state.endTime}
-            label="End Time:"
-            handleChangeMethod={this.handleChange}
-          />
-          <TextField
-            name="contact_name"
-            content={this.state.contact_name}
-            label="Contact Name:"
-            handleChangeMethod={this.handleChange}
-          />
+              <DateTimeField
+                name="endTime"
+                content={this.state.endTime}
+                label="End Time:"
+                handleChangeMethod={this.handleChange}
+              />
+              <TextField
+                name="contact_name"
+                content={this.state.contact_name}
+                label="Contact Name:"
+                handleChangeMethod={this.handleChange}
+              />
 
-          <TextField
-            name="tech_name"
-            content={this.state.tech_name}
-            label="Tech Name:"
-            handleChangeMethod={this.handleChange}
-          />
+              <TextField
+                name="tech_name"
+                content={this.state.tech_name}
+                label="Tech Name:"
+                handleChangeMethod={this.handleChange}
+              />
 
-          <TextField
-            name="md_name"
-            content={this.state.md_name}
-            label="Musical Director Name:"
-            handleChangeMethod={this.handleChange}
-          />
+              <TextField
+                name="md_name"
+                content={this.state.md_name}
+                label="Musical Director Name:"
+                handleChangeMethod={this.handleChange}
+              />
 
-          <div className="button-group">
-            <button className="button secondary radius" onClick={this.handleClearForm}>Clear</button>
-            <input className="button radius" type="submit" value="Submit Form" />
+              <div className="button-group">
+                <button className="button secondary radius" onClick={this.handleClearForm}>Clear</button>
+                <input className="button radius" type="submit" value="Submit Form" />
+              </div>
+
+            </form>
           </div>
-      
-        </form>
+        </section>
       </div>
     )
   }
 }
 
-export default EventNewFormContainer
+export default NewEventModal

@@ -5,11 +5,13 @@
     "@rails/webpacker": "3.5",
     "babel-preset-react": "~6.24.1",
     "google-map-react": "^1.1.4",
+    "match-sorter": "^3.0.0",
     "moment": "^2.24.0",
     "prop-types": "~15.6.0",
     "react": "~15.4.2",
     "react-dom": "~15.4.2",
     "react-router": "~3.2.0",
+    "react-table": "^6.10.0",
     "redbox-react": "1.6.0"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 monday_month = 5
-monday_day = 13
+monday_day = 20
 
 
 mainTheater = Space.create(name: "Main Theater", location: "40 Prospect Street", capacity: 90, description: "The main theater of ImprovBoston. Has a piano, projection system, scoreboard, and room for over 90 people!")
