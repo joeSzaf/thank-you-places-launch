@@ -10,6 +10,7 @@ import EventShowContainer from '../containers/EventShowContainer'
 import EventNewFormContainer from '../containers/EventNewFormContainer'
 import EventEditContainer from '../containers/EventEditContainer'
 import TopBar from '../components/TopBar'
+import PatronManagerImporter from '../containers/PatronManagerImporter'
 
 import SideMenu from '../containers/SideMenu'
 import Home from '../containers/Home'
@@ -86,6 +87,11 @@ class Dashboard extends Component {
       content =
         <EventEditContainer
           id={this.state.selectedEventId}
+          handleNavChange={this.handleNavChange}
+        />
+    } else if (this.state.currentView === 'nav-addPmEvent') {
+      content =
+        <PatronManagerImporter
           handleNavChange={this.handleNavChange}
         />
     } else {

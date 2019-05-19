@@ -4,9 +4,8 @@ const SpaceTile = props => {
 
   return(
 
-    <div className="callout space-callout">
-      <hr />
-      <h4 className="title-h2 space-index-space-name" onClick={props.onClick} className="link-showSpace" to={props.id}> {props.name}</h4>
+    <div className="callout space-callout test">
+      <h3 className="space-index-space-name test" onClick={props.onClick} className="link-showSpace" to={props.id}> {props.name}</h3>
       <p>Location: { props.location }</p>
       <p>Description: { props.description }</p>
     </div>

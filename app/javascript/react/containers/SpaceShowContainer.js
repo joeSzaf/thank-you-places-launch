@@ -33,8 +33,8 @@ class SpaceShowContainer extends Component {
         <h1 className="title-h1"> { this.state.space.name } </h1>
         <h3> { this.state.space.location } </h3>
         <p> { this.state.space.description } </p>
-        <button to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
-        <button to={"link-editSpace"} onClick={this.props.handleNavChange}>Edit</button>
+        <button className="button radius secondary" to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
+        <button className="button radius" to={"link-editSpace"} onClick={this.props.handleNavChange}>Edit</button>
       </div>
     )
   }

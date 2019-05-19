@@ -67,7 +67,7 @@ class EventEditContainer extends Component {
       }
       this.setState({
         eventName: body.event.name,
-        startTime: moment(body.event.start_time).format('YYYY-MM-DDTHH:00') ,
+        startTime: moment(body.event.start_time).format('YYYY-MM-DDTHH:00'),
         endTime: moment(body.event.end_time).format('YYYY-MM-DDTHH:00'),
         eventSpaceId: body.event.space_id,
         eventSpaceName: body.event.space_name,
@@ -131,7 +131,6 @@ class EventEditContainer extends Component {
         tech_name: this.state.tech_name,
         md_name: this.state.md_name
       }
-      debugger
       this.editEvent(formPayload)
     }
   }
@@ -227,11 +226,11 @@ class EventEditContainer extends Component {
 
 
           <div className="button-group">
-            <input className="button warning" type="submit" value="Update" />
+            <button className="button radius secondary" to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
+            <input className="button radius" type="submit" value="Update" />
           </div>
         </form>
 
-        <button to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
       </div>
     )
   }

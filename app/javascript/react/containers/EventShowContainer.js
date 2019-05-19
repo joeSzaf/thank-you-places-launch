@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 class EventShowContainer extends Component {
   constructor(props) {
@@ -32,10 +33,9 @@ class EventShowContainer extends Component {
       <div className="content-container">
         <h1 className=""> { this.state.event.name } </h1>
         <p> { this.state.event.description } </p>
-        <p> { this.state.event.start_time } </p>
-        <p> { this.state.event.end_time } </p>
-        <button to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
-        <button to={"link-editEvent"} onClick={this.props.handleNavChange}>Edit</button>
+        <p> { moment(this.state.event.start_time).format("MM-DD-YYYY, HH-MM a") } - { moment(this.state.event.end_time).format("DD-MM-YYYY, mm-ss a")} </p>
+        <button className="button radius secondary" to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
+        <button className="button radius" to={"link-editEvent"} onClick={this.props.handleNavChange}>Edit</button>
       </div>
     )
   }

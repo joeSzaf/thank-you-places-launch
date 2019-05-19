@@ -50,6 +50,7 @@ class SpacesContainer extends Component {
     return(
       <div className="content-container">
         <h1 className="title-h1">Your Places</h1>
+        <p>Click on a place to edit it!</p>
         {spaces}
       </div>
     )

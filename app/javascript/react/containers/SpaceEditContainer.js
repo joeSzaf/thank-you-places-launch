@@ -171,11 +171,12 @@ class SpaceEditContainer extends Component {
             handleChangeMethod={this.handleChange}
           />
           <div className="button-group">
-            <input className="button" type="submit" value="Update" />
+            <button className="button radius secondary" to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
+            <input className="button radius" type="submit" value="Update" />
           </div>
         </form>
 
-        <button to={"nav-spaces"} onClick={this.props.handleNavChange}>Back</button>
+
       </div>
     )
   }
