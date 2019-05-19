@@ -36,7 +36,7 @@ class SideMenu extends Component {
       {
         iconClass: "fa fa-user",
         label: "Employees",
-        view: "employees"
+        view: "techs"
       },
       {
         iconClass: "fa fa-calendar-plus",

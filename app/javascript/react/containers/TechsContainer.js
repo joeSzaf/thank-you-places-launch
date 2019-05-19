@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-import SpaceTile from '../components/SpaceTile'
+import TechTile from '../components/TechTile'
 
-class EmployeesContainer extends Component {
+class TechsContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      spaces: []
+      techs: []
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/v1/spaces')
+    fetch('http://localhost:3000/api/v1/tech_directors')
       .then(response => {
         if (response.ok) {
           return response;
@@ -25,7 +25,7 @@ class EmployeesContainer extends Component {
       .then(response => response.json())
       .then(body => {
         this.setState({
-        spaces: body.spaces
+        techs: body.techs
       })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -33,15 +33,15 @@ class EmployeesContainer extends Component {
 
   render() {
 
-    let spaces = this.state.spaces.map(space => {
+    let techs = this.state.techs.map(tech => {
         return(
-          <SpaceTile
-            key={space.id}
-            id={space.id}
-            name={space.name}
-            location={space.location}
-            capacity={space.capacity}
-            description={space.description}
+          <TechTile
+            key={tech.id}
+            id={tech.id}
+            first_name={tech.first_name}
+            last_name={tech.last_name}
+            email={tech.email}
+            phone_number={tech.phone_number}
             onClick={this.props.onClick}
           />
         )
@@ -50,10 +50,10 @@ class EmployeesContainer extends Component {
     return(
       <div className="content-container">
         <h1 className="title-h1">Employee Info</h1>
-        <p>HellO!</p>
+        { techs }
       </div>
     )
   }
 }
 
-export default EmployeesContainer
+export default TechsContainer

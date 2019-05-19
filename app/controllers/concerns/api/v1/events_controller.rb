@@ -38,6 +38,7 @@ class Api::V1::EventsController < ApiController
   def serialized_events
     ActiveModel::Serializer::ArraySerializer.new(Event.all, each_serializer: EventSerializer)
   end
+  
   def serialized_spaces
     ActiveModel::Serializer::ArraySerializer.new(Space.all, each_serializer: SpaceSerializer)
   end
