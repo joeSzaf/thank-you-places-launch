@@ -12,7 +12,7 @@ const TopBar = props => {
 
       <section className="top-bar-section">
         <ul className="right">
-            <li><a href="/users/auth/google_oauth2">GOOGLE</a></li>
+            <li><a href="/users/auth/google_oauth2">Sign In</a></li>
         </ul>
       </section>
     </nav>

@@ -10,12 +10,6 @@ class Api::V1::SpacesController < ApiController
 
   def create
     space = Space.new(space_params)
-
-    if space.save
-      render json: { space: space }
-    else
-      render json: { space: space }
-    end
   end
 
   def update

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import NavTile from "../components/NavTile"
 
-import tyPlacesLogo from '../../../assets/images/typlaces-logo.png'
+import tyPlacesLogo from '../../../assets/images/typlaces-logo2.png'
 
 class SideMenu extends Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class SideMenu extends Component {
 
     return(
       <section id="sideMenu" className="dashboard-sidemenu">
-        <img src={tyPlacesLogo} alt="tyPlaces" />
+        <img className="typlaces-logo" src={tyPlacesLogo} alt="tyPlaces" />
         <nav className="dashboard-sidemenu-nav">
           { navigation }
         </nav>

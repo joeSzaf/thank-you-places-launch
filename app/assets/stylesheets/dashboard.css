@@ -18,6 +18,8 @@ p {
   top: 0px;
   bottom: 0;
   border-right: 3px solid #FFC35C;
+  box-shadow: 0 0 6px 2px black;
+  z-index: 10;
 }
 
 .dashboard-sidemenu-nav {
@@ -107,4 +109,8 @@ p {
 
 .button {
   margin-right: 5px !important;
+}
+
+.typlaces-logo {
+  padding: 20px;
 }
