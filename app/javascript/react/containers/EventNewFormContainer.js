@@ -76,7 +76,6 @@ class EventNewFormContainer extends React.Component {
         tech_name: this.state.tech_name,
         md_name: this.state.md_name
       }
-      debugger
       this.addNewEvent(formPayload)
       this.handleClearForm(event)
     }
@@ -203,7 +202,7 @@ class EventNewFormContainer extends React.Component {
             <button className="button secondary radius" onClick={this.handleClearForm}>Clear</button>
             <input className="button radius" type="submit" value="Submit Form" />
           </div>
-      
+
         </form>
       </div>
     )

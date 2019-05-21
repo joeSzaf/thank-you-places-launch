@@ -17,7 +17,7 @@ class EventTableDay extends Component {
       return(
         <tr>
           <td onClick={this.props.onClick} className="link-showEvent" to={event.id}>{event.name}</td>
-          <td>{moment(event.start_time).format("HH:mm")}-{moment(event.end_time).format("HH:mm")}</td>
+          <td>{moment(event.start_time).format("h:mm")}-{moment(event.end_time).format("h:mm a")}</td>
           <td>{event.space_name}</td>
           <td>-</td>
         </tr>

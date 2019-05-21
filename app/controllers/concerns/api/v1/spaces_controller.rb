@@ -9,7 +9,7 @@ class Api::V1::SpacesController < ApiController
   end
 
   def create
-    space = Space.new(space_params)
+    space = Space.create!(space_params)
   end
 
   def update

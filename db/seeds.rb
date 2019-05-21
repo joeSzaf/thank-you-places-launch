@@ -23,7 +23,7 @@ room7 = Space.create(name: "620 Room 7", location: "620 Mass Ave", description: 
 
 # rehearsals
 rehearsals = [
-  {name: "Umbrella Arts Audition", space: room2, start_time: "2019-#{monday_month}-#{monday_day}T17:30:00-04:00", end_time: "2019-#{monday_month}-#{monday_day}T21:00:00-04:00", contact_name: "Mike Carr" },
+  {name: "Mango Rehearsal", space: room2, start_time: "2019-#{monday_month}-#{monday_day}T17:30:00-04:00", end_time: "2019-#{monday_month}-#{monday_day}T21:00:00-04:00", contact_name: "Mike Carr" },
   {name: "The Wild Rehearsal", space: room7, start_time: "2019-#{monday_month}-#{monday_day}T19:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day}T21:00:00-04:00", contact_name: "John Serpico" },
   {name: "Mainstage Rehearsal", space: upperTrainingCenter, start_time: "2019-#{monday_month}-#{monday_day}T19:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day}T21:00:00-04:00", contact_name: "Danny Balel" },
   {name: "Terrible People Rehearsal", space: lowerTrainingCenter, start_time: "2019-#{monday_month}-#{monday_day}T21:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day}T23:00:00-04:00", contact_name: "John Serpico" },
@@ -49,8 +49,8 @@ shows = [
   {name: "Comedy Lab", space: studio, start_time: "2019-#{monday_month}-#{monday_day+2} 20:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+2} 21:30:00-04:00", contact_name: "Josh Shelor", tech_director: techs.sample, md_name: music_directors.sample},
   {name: "Harold Night: Top Shelf", space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+2} 19:30:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+2} 21:00:00-04:00", contact_name: "Padraic Conchobhair", tech_director: techs.sample, md_name: music_directors.sample},
   {name: "Harold Night: Fresh Blend", space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+2} 21:30:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+2} 23:00:00-04:00", contact_name: "Padraic Conchobhair", tech_director: techs.sample, md_name: music_directors.sample},
-  {name: 'Mainstage', space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+3} 20:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+5} 21:30:00-04:00", contact_name: "Josh Shelor", tech_director: techs.sample, md_name: music_directors.sample},
-  {name: 'Mainstage', space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+4} 20:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+5} 21:30:00-04:00", contact_name: "Josh Shelor", tech_director: techs.sample, md_name: music_directors.sample},
+  {name: 'Mainstage', space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+3} 20:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+3} 21:30:00-04:00", contact_name: "Josh Shelor", tech_director: techs.sample, md_name: music_directors.sample},
+  {name: 'Mainstage', space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+4} 20:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+4} 21:30:00-04:00", contact_name: "Josh Shelor", tech_director: techs.sample, md_name: music_directors.sample},
   {name: "ClueProv", space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+4} 22:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+4} 23:30:00-04:00", contact_name: "Joe Szafarowicz", tech_director: techs.sample, md_name: music_directors.sample},
   {name: "Family Show", space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+5} 16:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+5} 17:30:00-04:00", contact_name: "Whitney Hawkins", tech_director: techs.sample, md_name: music_directors.sample},
   {name: "All Access", space: mainTheater, start_time: "2019-#{monday_month}-#{monday_day+5} 18:00:00-04:00", end_time: "2019-#{monday_month}-#{monday_day+5} 19:30:00-04:00", contact_name: "Ashley Voltz", tech_director: techs.sample, md_name: music_directors.sample},

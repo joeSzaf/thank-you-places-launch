@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import NavTile from "../components/NavTile"
 
-import tyPlacesLogo from '../../../assets/images/typlaces-logo2.png'
+import tyPlacesLogo from '../../../assets/images/typlaces-logo3.png'
 
 class SideMenu extends Component {
   constructor(props) {
@@ -29,14 +29,14 @@ class SideMenu extends Component {
         view: "addSpace"
       },
       {
-        iconClass: "fa fa-calendar-alt",
-        label: "Events",
-        view: "events"
-      },
-      {
         iconClass: "fa fa-user",
         label: "Employees",
         view: "techs"
+      },
+      {
+        iconClass: "fa fa-calendar-alt",
+        label: "Events",
+        view: "events"
       },
       {
         iconClass: "fa fa-calendar-plus",

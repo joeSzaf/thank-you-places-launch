@@ -20,7 +20,7 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-    event = Event.new(event_params)
+    event = Event.create!(event_params)
 
     auth = Signet::OAuth2::Client.new(
       token_credential_uri: 'https://oauth2.googleapis.com/token',
