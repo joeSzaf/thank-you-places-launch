@@ -1,0 +1,19 @@
+.event-day-table {
+  width: 100%;
+}
+
+.day-table-event-col {
+  width: 35%;
+}
+
+.day-table-time-col {
+  width: 15%;
+}
+
+.day-table-space-col {
+  width: 25%;
+}
+
+.day-table-contact-col {
+  width: 25%;
+}

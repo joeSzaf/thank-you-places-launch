@@ -52,7 +52,7 @@ class PatronManagerImporter extends Component {
             data.push({
               name: instance.eventName,
               venue: venue_info,
-              date: moment(instance.formattedDates.ISO8601).format('MM-DD-YY @ hh:mm a')
+              date: moment(instance.formattedDates.ISO8601).format('MM-DD-YY @ h:mm a')
             })
           })
         })

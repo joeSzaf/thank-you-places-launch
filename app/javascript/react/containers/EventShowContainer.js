@@ -33,7 +33,7 @@ class EventShowContainer extends Component {
       <div className="content-container">
         <h1 className=""> { this.state.event.name } </h1>
         <p> { this.state.event.description } </p>
-        <p> { moment(this.state.event.start_time).format("MM-DD-YYYY, HH-MM a") } - { moment(this.state.event.end_time).format("DD-MM-YYYY, mm-ss a")} </p>
+        <p> { moment(this.state.event.start_time).format("MM-DD-YYYY, h:mm a") } - { moment(this.state.event.end_time).format("MM-DD-YYYY, h:mm a")} </p>
         <button className="button radius secondary" to={"nav-events"} onClick={this.props.handleNavChange}>Back</button>
         <button className="button radius" to={"link-editEvent"} onClick={this.props.handleNavChange}>Edit</button>
       </div>

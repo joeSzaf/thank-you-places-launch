@@ -1,3 +1,6 @@
+require "google/apis/calendar_v3"
+require 'time'
+
 class Api::V1::EventsController < ApiController
   def index
     render json: { events: serialized_events }
@@ -17,13 +20,28 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-    event = Event.new(event_params)
+    event = Event.create!(event_params)
 
-    if event.save
-      render json: { event: event }
-    else
-      render json: { event: event }
-    end
+    auth = Signet::OAuth2::Client.new(
+      token_credential_uri: 'https://oauth2.googleapis.com/token',
+      access_token: current_user.access_token,
+      client_id: ENV["CLIENT_ID"],
+      client_secret: ENV["CLIENT_SECRET"],
+      refresh_token: current_user.refresh_token
+    )
+    auth.fetch_access_token!
+    calendar = Google::Apis::CalendarV3::CalendarService.new
+    calendar.authorization = auth
+    summary = "#{params["name"]}"
+
+    new_event = Google::Apis::CalendarV3::Event.new({
+      'summary': summary,
+      'start': {'date_time': "#{Time.parse(params['start_time']).utc.iso8601}"},
+      'end': {'date_time': "#{Time.parse(params['end_time']).utc.iso8601}"}
+    })
+
+    calendar.insert_event('1ggtssc9ektnnke3fvn884ebdc@group.calendar.google.com', new_event)
+
   end
 
   def update
@@ -38,7 +56,7 @@ class Api::V1::EventsController < ApiController
   def serialized_events
     ActiveModel::Serializer::ArraySerializer.new(Event.all, each_serializer: EventSerializer)
   end
-  
+
   def serialized_spaces
     ActiveModel::Serializer::ArraySerializer.new(Space.all, each_serializer: SpaceSerializer)
   end
