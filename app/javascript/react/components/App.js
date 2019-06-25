@@ -14,6 +14,7 @@ class App extends Component {
     return(
       <div className="app">
         <Router history={browserHistory}>
+          <Route path='/app' component={Dashboard} />
           <Route path='/spaces/new' component={Dashboard} />
           <Route path='/spaces/:id' component={Dashboard} />
           <Route path='/spaces' component={Dashboard} />

@@ -21,4 +21,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/app" => "app#show"
+
 end
