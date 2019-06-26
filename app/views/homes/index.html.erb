@@ -1,3 +1,18 @@
-<div>
-  <a href="/app">Get to app</a>
+<div id="landing-page">
+  <div class="hero-logo">
+    <div class="logo-container">
+      <h1 class="logo">Thank You Places</h1>
+    </div>
+
+    <div class="cell">
+      <%= link_to "See Schedule", app_path, class: "red-button button" %>
+      <%- if current_user -%>
+          <%= link_to 'Profile', current_user, class: "secondary button" %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "secondary button" %>
+        <%- else -%>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "secondary button" %>
+          <%= link_to 'Sign In', new_user_session_path, class: "secondary button" %>
+        <%- end -%>
+    </div>
+  </div>
 </div>
